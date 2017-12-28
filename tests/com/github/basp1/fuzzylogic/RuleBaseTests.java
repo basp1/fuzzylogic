@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class DecisionTreeTests {
+public class RuleBaseTests {
     @Test
     public void testTsukamoto() throws Throwable {
         Vocabulary voc = new Vocabulary();
@@ -21,15 +21,15 @@ public class DecisionTreeTests {
         b.assume("b1", new Fuzzyset.CValue(8));
         b.assume("b2", new Fuzzyset.CValue(4));
 
-        DecisionTree dt = new DecisionTree(new Basis.Mamdani(), voc);
+        RuleBase rb = new RuleBase(new Basis.Mamdani(), voc);
 
-        dt.add(new Rule(new And(new Is(a1, "a11"), new Is(a2, "a21")), new Is(b, "b1")));
-        dt.add(new Rule(new And(new Is(a1, "a12"), new Is(a2, "a22")), new Is(b, "b2")));
+        rb.add(new Rule(new And(new Is(a1, "a11"), new Is(a2, "a21")), new Is(b, "b1")));
+        rb.add(new Rule(new And(new Is(a1, "a12"), new Is(a2, "a22")), new Is(b, "b2")));
 
-        dt.set("a1", 1);
-        dt.set("a2", 2);
+        rb.set("a1", 1);
+        rb.set("a2", 2);
 
-        double answer = dt.eval().defuzzification();
+        double answer = rb.eval().defuzzification();
 
         assertEquals(5.3333333333, answer, 1e-8);
     }
@@ -52,17 +52,17 @@ public class DecisionTreeTests {
         speed.assume("fast", new Fuzzyset.PiecewiseLinear(new double[]{60, 80, 100}, new double[]{0, 1, 0}));
         speed.assume("blast", new Fuzzyset.PiecewiseLinear(new double[]{80, 100}, new double[]{0, 1}));
 
-        DecisionTree dt = new DecisionTree(new Basis.Mamdani(), voc);
+        RuleBase rb = new RuleBase(new Basis.Mamdani(), voc);
 
-        dt.add(new Rule(new And(new Is(temperature, "cold")), new Is(speed, "stop")));
-        dt.add(new Rule(new And(new Is(temperature, "cool")), new Is(speed, "slow")));
-        dt.add(new Rule(new And(new Is(temperature, "right")), new Is(speed, "medium")));
-        dt.add(new Rule(new And(new Is(temperature, "warm")), new Is(speed, "fast")));
-        dt.add(new Rule(new And(new Is(temperature, "hot")), new Is(speed, "blast")));
+        rb.add(new Rule(new And(new Is(temperature, "cold")), new Is(speed, "stop")));
+        rb.add(new Rule(new And(new Is(temperature, "cool")), new Is(speed, "slow")));
+        rb.add(new Rule(new And(new Is(temperature, "right")), new Is(speed, "medium")));
+        rb.add(new Rule(new And(new Is(temperature, "warm")), new Is(speed, "fast")));
+        rb.add(new Rule(new And(new Is(temperature, "hot")), new Is(speed, "blast")));
 
-        dt.set("temperature", 16);
+        rb.set("temperature", 16);
 
-        double answer = dt.eval().defuzzification();
+        double answer = rb.eval().defuzzification();
 
         assertEquals(41.42857142857142, answer, 1e-8);
     }

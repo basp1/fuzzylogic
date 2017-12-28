@@ -7,23 +7,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DecisionTree {
+public class RuleBase {
     Basis basis;
     Vocabulary vocabulary;
     ArrayList<Rule> rules;
 
-    public DecisionTree(Basis basis, Vocabulary vocabulary) {
+    public RuleBase(Basis basis, Vocabulary vocabulary) {
         this.basis = basis;
         this.rules = new ArrayList<>();
         this.vocabulary = vocabulary;
     }
 
-    public DecisionTree add(Rule rule) {
+    public RuleBase add(Rule rule) {
         rules.add(rule);
         return this;
     }
 
-    public DecisionTree addAll(List<Rule> rules) {
+    public RuleBase addAll(List<Rule> rules) {
         this.rules.addAll(rules);
         return this;
     }
@@ -41,7 +41,6 @@ public class DecisionTree {
                 deducts.put(name, acc);
             }
         }
-
 
         Value deduct = null;
         double max = 0;
