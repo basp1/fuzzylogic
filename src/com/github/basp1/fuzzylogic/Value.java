@@ -1,7 +1,5 @@
 package com.github.basp1.fuzzylogic;
 
-import com.github.basp1.fuzzylogic.Point;
-
 import java.util.UUID;
 import java.util.function.BiFunction;
 import java.util.function.Function;
