@@ -39,18 +39,18 @@ public class RuleBaseTests {
         Vocabulary voc = new Vocabulary();
 
         Variable temperature = voc.make("temperature");
-        temperature.assume("cold", new Fuzzyset.PiecewiseLinear(new double[]{5, 10}, new double[]{1, 0}));
-        temperature.assume("cool", new Fuzzyset.PiecewiseLinear(new double[]{5, 12, 17}, new double[]{0, 1, 0}));
-        temperature.assume("right", new Fuzzyset.PiecewiseLinear(new double[]{15, 20, 25}, new double[]{0, 1, 0}));
-        temperature.assume("warm", new Fuzzyset.PiecewiseLinear(new double[]{20, 26, 32}, new double[]{0, 1, 0}));
-        temperature.assume("hot", new Fuzzyset.PiecewiseLinear(new double[]{30, 35}, new double[]{0, 1}));
+        temperature.assume("cold", new PiecewiseLinear(new double[]{5, 10}, new double[]{1, 0}));
+        temperature.assume("cool", new PiecewiseLinear(new double[]{5, 12, 17}, new double[]{0, 1, 0}));
+        temperature.assume("right", new PiecewiseLinear(new double[]{15, 20, 25}, new double[]{0, 1, 0}));
+        temperature.assume("warm", new PiecewiseLinear(new double[]{20, 26, 32}, new double[]{0, 1, 0}));
+        temperature.assume("hot", new PiecewiseLinear(new double[]{30, 35}, new double[]{0, 1}));
 
         Variable speed = voc.make("speed");
-        speed.assume("stop", new Fuzzyset.PiecewiseLinear(new double[]{0, 20}, new double[]{1, 0}));
-        speed.assume("slow", new Fuzzyset.PiecewiseLinear(new double[]{10, 30, 50}, new double[]{0, 1, 0}));
-        speed.assume("medium", new Fuzzyset.PiecewiseLinear(new double[]{40, 60, 80}, new double[]{0, 1, 0}));
-        speed.assume("fast", new Fuzzyset.PiecewiseLinear(new double[]{60, 80, 100}, new double[]{0, 1, 0}));
-        speed.assume("blast", new Fuzzyset.PiecewiseLinear(new double[]{80, 100}, new double[]{0, 1}));
+        speed.assume("stop", new PiecewiseLinear(new double[]{0, 20}, new double[]{1, 0}));
+        speed.assume("slow", new PiecewiseLinear(new double[]{10, 30, 50}, new double[]{0, 1, 0}));
+        speed.assume("medium", new PiecewiseLinear(new double[]{40, 60, 80}, new double[]{0, 1, 0}));
+        speed.assume("fast", new PiecewiseLinear(new double[]{60, 80, 100}, new double[]{0, 1, 0}));
+        speed.assume("blast", new PiecewiseLinear(new double[]{80, 100}, new double[]{0, 1}));
 
         RuleBase rb = new RuleBase(new Basis.Mamdani(), voc);
 

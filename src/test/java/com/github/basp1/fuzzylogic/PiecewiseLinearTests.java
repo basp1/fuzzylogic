@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 public class PiecewiseLinearTests {
     @Test
     public void testPoint() {
-        Fuzzyset fs = new Fuzzyset.PiecewiseLinear(new double[]{10}, new double[]{1});
+        Fuzzyset fs = new PiecewiseLinear(new double[]{10}, new double[]{1});
 
         assertEquals(1, fs.apply(0), 1e-8);
         assertEquals(1, fs.apply(10), 1e-8);
@@ -17,7 +17,7 @@ public class PiecewiseLinearTests {
 
     @Test
     public void testLinearUp() {
-        Fuzzyset fs = new Fuzzyset.PiecewiseLinear(new double[]{5, 10}, new double[]{0, 1});
+        Fuzzyset fs = new PiecewiseLinear(new double[]{5, 10}, new double[]{0, 1});
 
         assertEquals(0, fs.apply(0), 1e-8);
         assertEquals(0, fs.apply(5), 1e-8);
@@ -32,7 +32,7 @@ public class PiecewiseLinearTests {
 
     @Test
     public void testLinearDown() {
-        Fuzzyset fs = new Fuzzyset.PiecewiseLinear(new double[]{5, 10}, new double[]{1, 0});
+        Fuzzyset fs = new PiecewiseLinear(new double[]{5, 10}, new double[]{1, 0});
 
         assertEquals(1, fs.apply(0), 1e-8);
         assertEquals(1, fs.apply(5), 1e-8);
@@ -47,7 +47,7 @@ public class PiecewiseLinearTests {
 
     @Test
     public void testTriangle() {
-        Fuzzyset fs = new Fuzzyset.PiecewiseLinear(new double[]{5, 10, 15}, new double[]{0, 1, 0});
+        Fuzzyset fs = new PiecewiseLinear(new double[]{5, 10, 15}, new double[]{0, 1, 0});
 
         assertEquals(0, fs.apply(0), 1e-8);
         assertEquals(0, fs.apply(5), 1e-8);

@@ -8,8 +8,8 @@ import static org.junit.Assert.assertTrue;
 public class FuzzysetMapTests {
     @Test
     public void testMapWithTriangle() {
-        Fuzzyset fs1 = new Fuzzyset.PiecewiseLinear(new double[]{1, 3, 5}, new double[]{0, 1, 0});
-        Fuzzyset fs2 = new Fuzzyset.PiecewiseLinear(new double[]{4, 6, 8}, new double[]{0, 1, 0});
+        Fuzzyset fs1 = new PiecewiseLinear(new double[]{1, 3, 5}, new double[]{0, 1, 0});
+        Fuzzyset fs2 = new PiecewiseLinear(new double[]{4, 6, 8}, new double[]{0, 1, 0});
         Fuzzyset fs12 = fs1.mapWith(fs2, (a, b) -> Math.max(a, b));
 
         assertEquals(0, fs12.apply(1), 1e-8);
@@ -28,7 +28,7 @@ public class FuzzysetMapTests {
     public void testMapTriangle() {
         double alpha = 0.8;
 
-        Fuzzyset fs = new Fuzzyset.PiecewiseLinear(4, new double[]{1, 3, 5}, new double[]{0, 1, 0});
+        Fuzzyset fs = new PiecewiseLinear(4, new double[]{1, 3, 5}, new double[]{0, 1, 0});
         assertEquals(1.0, fs.getHeight(), 1e-8);
         assertEquals(11, fs.getPoints().length);
 
