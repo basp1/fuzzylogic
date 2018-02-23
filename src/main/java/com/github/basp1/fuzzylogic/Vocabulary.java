@@ -16,6 +16,10 @@ public class Vocabulary {
         return var;
     }
 
+    public boolean contains(String name) {
+        return variables.containsKey(name);
+    }
+
     public void add(Variable var) {
         variables.put(var.getName(), var);
     }
