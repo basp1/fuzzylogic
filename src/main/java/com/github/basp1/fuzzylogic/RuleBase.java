@@ -46,7 +46,7 @@ public class RuleBase {
         double max = 0;
         for (Value value : deducts.values()) {
             double height = value.getFuzzyset().getHeight();
-            if (height > max) {
+            if (height >= max) {
                 max = height;
                 deduct = value;
             }
@@ -56,6 +56,7 @@ public class RuleBase {
     }
 
     public void set(String name, double value) {
+        if(!vocabulary.contains(name)) return;
         vocabulary.get(name).setAttachedValue(value);
     }
 
