@@ -22,4 +22,21 @@ public class Or implements Term {
 
         return acc;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < terms.length; i++) {
+            Term term = terms[i];
+            sb.append("(");
+            sb.append(term.toString());
+            sb.append(")");
+            if (i < (terms.length - 1)) {
+                sb.append(" OR ");
+            }
+        }
+
+        return sb.toString();
+    }
 }

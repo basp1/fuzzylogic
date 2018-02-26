@@ -36,4 +36,21 @@ public class And implements Term {
 
         return acc;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < terms.size(); i++) {
+            Term term = terms.get(i);
+            sb.append("(");
+            sb.append(term.toString());
+            sb.append(")");
+            if (i < (terms.size() - 1)) {
+                sb.append(" AND ");
+            }
+        }
+
+        return sb.toString();
+    }
 }

@@ -89,4 +89,19 @@ public class RuleBase {
 
         return namedRules;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < rules.size(); i++) {
+            Rule rule = rules.get(i);
+            sb.append("RULE ");
+            sb.append((i + 1) + ":\n");
+            sb.append(rule.toString());
+            sb.append("\n\n");
+        }
+
+        return sb.toString();
+    }
 }

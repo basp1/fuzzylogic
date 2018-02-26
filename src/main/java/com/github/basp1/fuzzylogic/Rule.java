@@ -24,4 +24,16 @@ public class Rule {
     public Is getConsequent() {
         return consequent;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("IF\n    ");
+        sb.append(antecedent.toString());
+        sb.append("\nTHEN\n    ");
+        sb.append(consequent.toString());
+
+        return sb.toString();
+    }
 }

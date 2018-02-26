@@ -29,4 +29,15 @@ public class Is implements Term {
     public Value getValue() {
         return value;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(variable.getName());
+        sb.append(" IS ");
+        sb.append(value.getName());
+
+        return sb.toString();
+    }
 }
